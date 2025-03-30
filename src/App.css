@@ -1,0 +1,173 @@
+/* src/App.css */
+
+.app {
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.app-logo {
+  position: fixed;
+  top: 12px;
+  left: 1px;
+  width: 180px;
+  height: auto;
+  z-index: 1000;
+}
+
+/* ヒーロービュー */
+.hero {
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* タブのコンテンツ表示領域 */
+.tab-content {
+  flex: 1;
+  margin-bottom: 60px;
+}
+
+/* タブメニュー */
+.tab-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 1rem;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-button {
+  padding: 0.8rem 2rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border-radius: 8px;
+  position: relative;
+}
+
+.tab-button::after {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #00C853;
+  transition: all 0.3s ease;
+}
+
+.tab-button:hover {
+  color: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-button.active {
+  color: #ffffff;
+}
+
+.tab-button.active::after {
+  width: 70%;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 480px) {
+  .tab-menu {
+    padding: 0.8rem;
+    gap: 1rem;
+  }
+
+  .tab-button {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* 各ビュー用の最低限のスタイル */
+.start-view,
+.settings-view {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* 体重記録のフォームやグラフ */
+.manage-view form {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.weight-records ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.weight-chart {
+  margin-top: 20px;
+}
+
+/* 設定画面のスタイル */
+.settings-view button {
+  margin: 10px 0;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.settings-view button:hover {
+  background-color: #0056b3;
+}
+
+.settings-view hr {
+  margin: 20px 0;
+  border: none;
+  border-top: 1px solid #eee;
+}
+
+/* Google認証ボタンのスタイル */
+.google-auth {
+  margin: 20px 0;
+}
+
+.google-auth-button {
+  background-color: #4285f4;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.google-auth-button:hover {
+  background-color: #357abd;
+}
+
+/* など、必要に応じて調整 */

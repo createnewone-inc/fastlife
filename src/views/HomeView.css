@@ -1,0 +1,262 @@
+/* 全体を覆うコンテナ */
+.home-view {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* 背景アニメーション用コンテナ */
+  .bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 各背景画像要素 */
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: zoomFade 16s infinite;
+    opacity: 0;
+  }
+  
+  .bg1 {
+    background-image: url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUyfHx0cmFpbmluZ3xlbnwwfHwwfHx8Mg%3D%3D");
+    animation-delay: 0s;
+  }
+  
+  .bg2 {
+    background-image: url("https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI1fHx0cmFpbmluZ3xlbnwwfHwwfHx8Mg%3D%3D");
+    animation-delay: 5s;
+  }
+  
+  .bg3 {
+    background-image: url("https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ1fHx0cmFpbmluZ3xlbnwwfHwwfHx8Mg%3D%3D");
+    animation-delay: 10s;
+  }
+  
+  .bg4 {
+    background-image: url("https://images.unsplash.com/photo-1500904156668-758cff89dcff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZhc3Rpbmd8ZW58MHx8MHx8fDI%3D");
+    animation-delay: 15s;
+  }
+  
+  /* 背景アニメーションのキーフレーム */
+  @keyframes zoomFade {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    5% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    95% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+  
+  /* 半透明オーバーレイ（画面全体） */
+  .overlay {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /* 背景をやや暗く */
+    background: rgba(0, 0, 0, 0.35);
+  
+    /* フレックスで中央寄せ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    /* 適度な余白 */
+    padding: 2rem 1rem;
+  }
+  
+  
+  /* メインコンテンツ（オーバーレイ上） */
+  .content {
+    text-align: center;
+    color: #fff;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* タイトル */
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* サブタイトル */
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+/* 全体を覆うコンテナ */
+.home-view {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+  }
+  
+  /* 背景アニメーション用コンテナ */
+  .bg-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  /* 各背景画像要素 */
+  .bg-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: zoomFade 16s infinite;
+    opacity: 0;
+  }
+  
+  .bg1 {
+    background-image: url("https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTUyfHx0cmFpbmluZ3xlbnwwfHwwfHx8Mg%3D%3D");
+    animation-delay: 0s;
+  }
+  
+  .bg2 {
+    background-image: url("https://images.unsplash.com/photo-1521804906057-1df8fdb718b7?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTI1fHx0cmFpbmluZ3xlbnwwfHwwfHx8Mg%3D%3D");
+    animation-delay: 5s;
+  }
+  
+  .bg3 {
+    background-image: url("https://images.unsplash.com/photo-1574680178050-55c6a6a96e0a?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTQ1fHx0cmFpbmluZ3xlbnwwfHwwfHx8Mg%3D%3D");
+    animation-delay: 10s;
+  }
+  
+  .bg4 {
+    background-image: url("https://images.unsplash.com/photo-1500904156668-758cff89dcff?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fGZhc3Rpbmd8ZW58MHx8MHx8fDI%3D");
+    animation-delay: 15s;
+  }
+  
+  /* 背景アニメーションのキーフレーム */
+  @keyframes zoomFade {
+    0% {
+      opacity: 0;
+      transform: scale(1);
+    }
+    5% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    95% {
+      opacity: 0;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1);
+    }
+  }
+  
+  /* 半透明オーバーレイ（画面全体） */
+  .overlay {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    /* 背景をやや暗く */
+    background: rgba(0, 0, 0, 0.35);
+  
+    /* フレックスで中央寄せ */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
+    /* 適度な余白 */
+    padding: 2rem 1rem;
+  }
+  
+  
+  /* メインコンテンツ（オーバーレイ上） */
+  .content {
+    text-align: center;
+    color: #fff;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  /* タイトル */
+  .title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+  /* サブタイトル */
+  .subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+  }
+  
+  /* Googleログインボタン */
+  .google-login-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #fff;
+    color: #333;
+    font-weight: bold;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 24px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+  }
+  
+  .google-login-btn:hover {
+    background-color: #f2f2f2;
+  }
+  
+  /* ロゴ画像 */
+  .google-logo {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* ロゴ画像 */
+  .google-logo {
+    width: 24px;
+    height: 24px;
+  }
+  

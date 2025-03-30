@@ -1,0 +1,11 @@
+/* src/index.css */
+
+/* Google Fonts の読み込み例 (Open Sans) */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Open Sans', sans-serif; /* 全体のフォントを統一 */
+}
