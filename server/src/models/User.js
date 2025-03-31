@@ -1,32 +1,39 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('./index');
 
-const userSchema = new mongoose.Schema({
+const User = sequelize.define('User', {
   googleId: {
-    type: String,
-    required: true,
-    unique: true
+    type: DataTypes.STRING,
+    allowNull: true
   },
   email: {
-    type: String,
-    required: true,
+    type: DataTypes.STRING,
+    allowNull: false,
     unique: true
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  picture: {
+    type: DataTypes.STRING,
+    allowNull: true
   },
   displayName: String,
   firstName: String,
   lastName: String,
-  photo: String,
   createdAt: {
-    type: Date,
-    default: Date.now
+    type: DataTypes.DATE,
+    defaultValue: DataTypes.NOW
   },
-  courses: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course'
-  }],
+  courses: {
+    type: DataTypes.ARRAY(DataTypes.INTEGER),
+    defaultValue: []
+  },
   activeCourse: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course'
+    type: DataTypes.INTEGER,
+    defaultValue: null
   }
 });
 
-module.exports = mongoose.model('User', userSchema);
+module.exports = User;

@@ -1,31 +1,28 @@
-const mongoose = require('mongoose');
+const { DataTypes } = require('sequelize');
+const sequelize = require('./index');
+const User = require('./User');
 
-const courseSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const Course = sequelize.define('Course', {
+  startDate: {
+    type: DataTypes.DATE,
+    allowNull: false
   },
-  description: String,
-  fastingHours: {
-    type: Number,
-    required: true
+  endDate: {
+    type: DataTypes.DATE,
+    allowNull: false
   },
-  eatingHours: {
-    type: Number,
-    required: true
+  type: {
+    type: DataTypes.STRING,
+    allowNull: false
   },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  isPublic: {
-    type: Boolean,
-    default: false
-  },
-  createdAt: {
-    type: Date,
-    default: Date.now
+  notes: {
+    type: DataTypes.TEXT,
+    allowNull: true
   }
 });
 
-module.exports = mongoose.model('Course', courseSchema);
+// リレーションシップの設定
+Course.belongsTo(User);
+User.hasMany(Course);
+
+module.exports = Course;
