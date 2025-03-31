@@ -1,0 +1,18 @@
+<svg viewBox="0 0 500 150" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- 深みのあるダークグレーグラデーション -->
+    <linearGradient id="boldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#212121" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    
+    <!-- 鮮やかな緑のアクセント -->
+    <linearGradient id="vibrantGreen" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00C853" />
+      <stop offset="100%" stop-color="#2E7D32" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 太字で力強いロゴ -->
+  <text x="250" y="95" font-family="Futura, Arial Black, sans-serif" font-weight="900" font-size="72" letter-spacing="0" text-anchor="middle" fill="url(#boldGradient)">FAST<tspan fill="url(#vibrantGreen)">LIFE</tspan></text>
+</svg>
