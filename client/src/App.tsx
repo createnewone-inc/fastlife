@@ -8,6 +8,9 @@ import TabMenu from './components/TabMenu';
 import ManageView from './views/ManageView';
 import SettingsView from './views/SettingsView';
 import HomeView from './views/HomeView';
+import CourseDashboard from './components/Dashboard/CourseDashboard';
+import LoginHistory from './components/Auth/LoginHistory';
+import { Route } from 'react-router-dom';
 
 const App: FC = () => {
   const { user } = useAuth();
@@ -51,6 +54,8 @@ const App: FC = () => {
       <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
       <div className="tab-content">{renderTabContent()}</div>
       <TabMenu activeTab={activeTab} setActiveTab={setActiveTab} />
+      <Route path="/dashboard" element={<CourseDashboard />} />
+      <Route path="/login-history" element={<LoginHistory />} />
     </div>
   );
 };
