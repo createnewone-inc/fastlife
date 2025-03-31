@@ -16,6 +16,7 @@
     "node": "18.x"
   },
   "dependencies": {
-    "concurrently": "^8.2.1"
+    "concurrently": "^8.2.1",
+    "react-router-dom": "^7.4.1"
   }
 }

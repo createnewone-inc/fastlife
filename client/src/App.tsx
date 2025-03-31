@@ -1,4 +1,5 @@
 // src/App.tsx
+import React from 'react';
 import { useState, FC } from 'react';
 import './App.css';
 import { useAuth } from './context/AuthContext';
@@ -10,7 +11,7 @@ import SettingsView from './views/SettingsView';
 import HomeView from './views/HomeView';
 import CourseDashboard from './components/Dashboard/CourseDashboard';
 import LoginHistory from './components/Auth/LoginHistory';
-import { Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const App: FC = () => {
   const { user } = useAuth();
@@ -20,20 +21,24 @@ const App: FC = () => {
   // 未ログインなら HomeView を表示
   if (!user) {
     return (
-      <>
-        <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
-        <HomeView />
-      </>
+      <BrowserRouter>
+        <div className="app">
+          <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
+          <HomeView />
+        </div>
+      </BrowserRouter>
     );
   }
 
   // ログイン済みだが、コースが未選択なら Hero を表示してコース選択を促す
   if (!selectedCourse) {
     return (
-      <>
-        <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
-        <Hero />
-      </>
+      <BrowserRouter>
+        <div className="app">
+          <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
+          <Hero />
+        </div>
+      </BrowserRouter>
     );
   }
 
@@ -50,13 +55,22 @@ const App: FC = () => {
   };
 
   return (
-    <div className="app">
-      <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
-      <div className="tab-content">{renderTabContent()}</div>
-      <TabMenu activeTab={activeTab} setActiveTab={setActiveTab} />
-      <Route path="/dashboard" element={<CourseDashboard />} />
-      <Route path="/login-history" element={<LoginHistory />} />
-    </div>
+    <BrowserRouter>
+      <div className="app">
+        <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
+        
+        <Routes>
+          <Route path="/dashboard" element={<CourseDashboard />} />
+          <Route path="/login-history" element={<LoginHistory />} />
+          <Route path="/" element={
+            <>
+              <div className="tab-content">{renderTabContent()}</div>
+              <TabMenu activeTab={activeTab} setActiveTab={setActiveTab} />
+            </>
+          } />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 };
 
