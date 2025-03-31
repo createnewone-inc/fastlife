@@ -1,1 +1,293 @@
- 
+.course-dashboard-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem;
+}
+
+.course-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.course-header h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin: 0;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: white;
+}
+
+.status-badge.active {
+  background-color: #4CAF50;
+}
+
+.status-badge.completed {
+  background-color: #3498db;
+}
+
+.status-badge.abandoned {
+  background-color: #95a5a6;
+}
+
+/* 進捗バー */
+.course-progress-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.progress-header h3 {
+  font-size: 1.3rem;
+  color: #333;
+  margin: 0;
+}
+
+.progress-percentage {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #4CAF50;
+}
+
+.progress-bar-container {
+  height: 10px;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4CAF50;
+  border-radius: 5px;
+  transition: width 0.5s ease-in-out;
+}
+
+/* タイムライン */
+.progress-timeline {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+  position: relative;
+}
+
+.progress-timeline::before {
+  content: '';
+  position: absolute;
+  top: 25px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+.timeline-phase {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+}
+
+.phase-label {
+  font-weight: 600;
+  color: #555;
+  margin-bottom: 0.5rem;
+}
+
+.phase-dates {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.phase-indicator {
+  width: 20px;
+  height: 20px;
+  background-color: #fff;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  margin-top: 15px;
+}
+
+.phase-indicator.active {
+  background-color: #4CAF50;
+  border-color: #4CAF50;
+  box-shadow: 0 0 0 5px rgba(76, 175, 80, 0.2);
+}
+
+.timeline-phase.preparation .phase-indicator.active {
+  background-color: #f39c12;
+  border-color: #f39c12;
+  box-shadow: 0 0 0 5px rgba(243, 156, 18, 0.2);
+}
+
+.timeline-phase.fasting .phase-indicator.active {
+  background-color: #e74c3c;
+  border-color: #e74c3c;
+  box-shadow: 0 0 0 5px rgba(231, 76, 60, 0.2);
+}
+
+.timeline-phase.recovery .phase-indicator.active {
+  background-color: #3498db;
+  border-color: #3498db;
+  box-shadow: 0 0 0 5px rgba(52, 152, 219, 0.2);
+}
+
+/* 詳細カード */
+.course-details-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.course-detail-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background-color: #f5f8ff;
+  border-radius: 10px;
+  margin-right: 1rem;
+  color: #4a90e2;
+  font-size: 1.3rem;
+}
+
+.card-content {
+  flex: 1;
+}
+
+.card-content h4 {
+  font-size: 0.9rem;
+  color: #777;
+  margin: 0 0 0.5rem 0;
+  font-weight: 500;
+}
+
+.card-value {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* ログセクション */
+.daily-logs-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.daily-log-input,
+.daily-log-history {
+  flex: 1;
+}
+
+/* ローディングと空の状態 */
+.loading-spinner {
+  text-align: center;
+  padding: 3rem;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  background-color: #ffeaea;
+  color: #e74c3c;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+.no-active-course {
+  text-align: center;
+  padding: 3rem;
+  color: #666;
+  font-size: 1.1rem;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  margin: 2rem 0;
+}
+
+@media (max-width: 768px) {
+  .daily-logs-section {
+    grid-template-columns: 1fr;
+  }
+
+  .course-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .course-header h2 {
+    margin-bottom: 1rem;
+  }
+
+  .progress-timeline {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .progress-timeline::before {
+    width: 2px;
+    height: auto;
+    top: 0;
+    bottom: 0;
+    left: 10px;
+    right: auto;
+  }
+
+  .timeline-phase {
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    width: 100%;
+    padding-left: 30px;
+  }
+
+  .phase-indicator {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-top: 0;
+  }
+
+  .phase-dates {
+    margin-bottom: 0;
+    margin-left: 1rem;
+  }
+} 

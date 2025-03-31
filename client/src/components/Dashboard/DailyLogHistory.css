@@ -1,1 +1,159 @@
- 
+.daily-log-history-container {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+  }
+  
+  .history-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .history-header h3 {
+    font-size: 1.3rem;
+    color: #333;
+    margin: 0;
+  }
+  
+  .view-mode-toggle {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .toggle-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f1f1f1;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .toggle-button.active {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  .toggle-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .toggle-button svg {
+    font-size: 1rem;
+  }
+  
+  /* リスト表示 */
+  .logs-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 500px;
+    overflow-y: auto;
+  }
+  
+  .log-item {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .log-item:hover {
+    background-color: #f0f7ff;
+  }
+  
+  .log-date {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #4a90e2;
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  
+  .log-date svg {
+    font-size: 1rem;
+  }
+  
+  .log-details {
+    padding-left: 1.5rem;
+  }
+  
+  .log-weight {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+  }
+  
+  .log-weight svg {
+    color: #f39c12;
+  }
+  
+  .log-memo {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    color: #555;
+  }
+  
+  .log-memo svg {
+    color: #7f8c8d;
+    margin-top: 0.2rem;
+  }
+  
+  .log-memo p {
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  /* グラフ表示 */
+  .chart-container {
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    height: 400px;
+  }
+  
+  .no-weight-data {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    color: #777;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  .no-logs {
+    text-align: center;
+    padding: 3rem;
+    color: #666;
+    font-size: 1.1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+  }
+  
+  @media (max-width: 768px) {
+    .logs-list {
+      max-height: 400px;
+    }
+    
+    .chart-container {
+      height: 300px;
+    }
+  }
