@@ -18,7 +18,7 @@ const App: FC = () => {
   if (!user) {
     return (
       <>
-        <img src="/fastlife-logo.svg" alt="FastLife" className="app-logo" />
+        <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
         <HomeView />
       </>
     );
@@ -28,7 +28,7 @@ const App: FC = () => {
   if (!selectedCourse) {
     return (
       <>
-        <img src="/fastlife-logo.svg" alt="FastLife" className="app-logo" />
+        <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
         <Hero />
       </>
     );
@@ -48,7 +48,7 @@ const App: FC = () => {
 
   return (
     <div className="app">
-      <img src="/fastlife-logo.svg" alt="FastLife" className="app-logo" />
+      <img src="/fastlife/fastlife-logo.svg" alt="FastLife" className="app-logo" />
       <div className="tab-content">{renderTabContent()}</div>
       <TabMenu activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
