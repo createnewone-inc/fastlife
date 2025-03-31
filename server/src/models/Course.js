@@ -1,28 +1,37 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./index');
-const User = require('./User');
 
 const Course = sequelize.define('Course', {
-  startDate: {
-    type: DataTypes.DATE,
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true
+  },
+  name: {
+    type: DataTypes.STRING(100),
     allowNull: false
   },
-  endDate: {
-    type: DataTypes.DATE,
-    allowNull: false
+  color_code: {
+    type: DataTypes.STRING(10)
   },
-  type: {
-    type: DataTypes.STRING,
-    allowNull: false
+  description: {
+    type: DataTypes.TEXT
   },
-  notes: {
-    type: DataTypes.TEXT,
-    allowNull: true
+  total_days: {
+    type: DataTypes.INTEGER
+  },
+  preparation_days: {
+    type: DataTypes.INTEGER
+  },
+  recovery_days: {
+    type: DataTypes.INTEGER
   }
+}, {
+  timestamps: false
 });
 
-// リレーションシップの設定
-Course.belongsTo(User);
-User.hasMany(Course);
+// リレーションシップの設定はassociations.jsで一元管理するため削除
+// Course.belongsTo(User);
+// User.hasMany(Course);
 
 module.exports = Course;

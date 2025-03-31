@@ -1,0 +1,215 @@
+.login-history-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 1200px;
+}
+
+.history-title {
+  font-size: 1.8rem;
+  color: #333;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* フィルターセクション */
+.history-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.search-container {
+  position: relative;
+  flex: 1;
+  min-width: 250px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.search-input {
+  width: 100%;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.date-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.date-filter label {
+  color: #555;
+  font-weight: 500;
+}
+
+.date-input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+.date-input:focus {
+  outline: none;
+  border-color: #4a90e2;
+}
+
+.clear-filter {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.clear-filter:hover {
+  background-color: rgba(231, 76, 60, 0.1);
+}
+
+/* テーブルスタイル */
+.history-table-container {
+  overflow-x: auto;
+}
+
+.history-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.history-table th {
+  background-color: #f9f9f9;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #eee;
+}
+
+.history-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  color: #333;
+}
+
+.history-table tbody tr:hover {
+  background-color: #f5f8ff;
+}
+
+/* テーブルセル特殊スタイル */
+.user-cell {
+  min-width: 200px;
+}
+
+.username {
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.email {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.datetime-cell {
+  min-width: 200px;
+}
+
+.date, .time {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.date {
+  margin-bottom: 0.3rem;
+}
+
+.date svg, .time svg {
+  color: #4a90e2;
+  font-size: 0.9rem;
+}
+
+.device-cell, .location-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.device-cell svg {
+  color: #9b59b6;
+}
+
+.location-cell svg {
+  color: #e74c3c;
+}
+
+/* 結果なしメッセージ */
+.no-results {
+  text-align: center;
+  padding: 3rem;
+  color: #777;
+  font-size: 1.1rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+}
+
+.loading-spinner {
+  text-align: center;
+  padding: 3rem;
+  color: #888;
+  font-size: 1.1rem;
+}
+
+.error-message {
+  background-color: #ffeaea;
+  color: #e74c3c;
+  padding: 1rem;
+  border-radius: 5px;
+  margin: 1rem 0;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .history-filters {
+    flex-direction: column;
+  }
+  
+  .search-container,
+  .date-filter {
+    width: 100%;
+  }
+  
+  .date-filter {
+    flex-wrap: wrap;
+  }
+  
+  .history-table th:nth-child(3), 
+  .history-table td:nth-child(3) {
+    display: none;
+  }
+} 

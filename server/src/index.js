@@ -13,6 +13,8 @@ const sequelize = require('./models/index');
 // モデルをインポート
 const User = require('./models/User');
 const Course = require('./models/Course');
+// モデル間の関連付けをインポート
+const models = require('./models/associations');
 
 // パスポート設定のインポート
 require('./config/passport');
@@ -71,10 +73,71 @@ sequelize.authenticate()
   })
   .then(() => {
     console.log('モデル同期完了');
+    // 初期データの投入（必要に応じて）
+    return initializeData();
   })
   .catch(err => {
     console.error('データベース接続エラー:', err);
   });
+
+// 初期データ作成関数
+async function initializeData() {
+  try {
+    // コースの初期データを作成
+    const coursesCount = await models.Course.count();
+    if (coursesCount === 0) {
+      await models.Course.bulkCreate([
+        {
+          name: '16時間ファスティング',
+          color_code: '#4CAF50',
+          description: '毎日16時間の断食を行うプログラム',
+          total_days: 7,
+          preparation_days: 1,
+          recovery_days: 1
+        },
+        {
+          name: '24時間ファスティング',
+          color_code: '#2196F3',
+          description: '24時間の完全断食を行うプログラム',
+          total_days: 1,
+          preparation_days: 1,
+          recovery_days: 1
+        },
+        {
+          name: '3日間ファスティング',
+          color_code: '#9C27B0',
+          description: '3日間の断食チャレンジ',
+          total_days: 3,
+          preparation_days: 2,
+          recovery_days: 2
+        }
+      ]);
+      console.log('初期コースデータが作成されました');
+    }
+
+    // 既存ユーザーの設定を確認・作成
+    const users = await models.User.findAll();
+    for (const user of users) {
+      // 各ユーザーに対して設定が存在するか確認
+      const settingExists = await models.Setting.findOne({
+        where: { user_id: user.id }
+      });
+      
+      // 設定が存在しない場合は作成
+      if (!settingExists) {
+        await models.Setting.create({
+          user_id: user.id,
+          notifications_enabled: true,
+          auto_background: true,
+          language: 'ja'
+        });
+        console.log(`ユーザーID ${user.id} の設定を作成しました`);
+      }
+    }
+  } catch (error) {
+    console.error('初期データ作成エラー:', error);
+  }
+}
 
 // サーバー起動
 app.listen(PORT, () => {
