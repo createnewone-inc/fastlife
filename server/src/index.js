@@ -1,11 +1,18 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
-const mongoose = require('mongoose');
+// mongooseは使わないのでコメントアウト
+// const mongoose = require('mongoose');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+// MongoStoreはPostgreSQLに切り替えるのでコメントアウト
+// const MongoStore = require('connect-mongo');
 const passport = require('passport');
 const path = require('path');
+// sequelizeのインポートを修正
+const sequelize = require('./models/index');
+// モデルをインポート
+const User = require('./models/User');
+const Course = require('./models/Course');
 
 // パスポート設定のインポート
 require('./config/passport');
@@ -26,15 +33,11 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// セッション設定
+// セッション設定 - PostgreSQLに切り替え
 app.use(session({
   secret: process.env.SESSION_SECRET || 'your-secret-key',
   resave: false,
   saveUninitialized: false,
-  store: MongoStore.create({
-    mongoUrl: process.env.MONGODB_URI || 'mongodb://localhost:27017/fastlife',
-    ttl: 14 * 24 * 60 * 60 // 14日間
-  }),
   cookie: {
     maxAge: 14 * 24 * 60 * 60 * 1000, // 14日間
     secure: process.env.NODE_ENV === 'production'
@@ -59,10 +62,19 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// MongoDB接続
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/fastlife')
-  .then(() => console.log('MongoDB 接続成功'))
-  .catch(err => console.error('MongoDB 接続エラー:', err));
+// PostgreSQL接続と同期
+sequelize.authenticate()
+  .then(() => {
+    console.log('PostgreSQL接続成功');
+    // モデルをデータベースと同期
+    return sequelize.sync({ force: false });
+  })
+  .then(() => {
+    console.log('モデル同期完了');
+  })
+  .catch(err => {
+    console.error('データベース接続エラー:', err);
+  });
 
 // サーバー起動
 app.listen(PORT, () => {

@@ -8,10 +8,10 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
   try {
-    const user = await User.findById(id);
+    const user = await User.findByPk(id);
     done(null, user);
-  } catch (error) {
-    done(error, null);
+  } catch (err) {
+    done(err);
   }
 });
 
@@ -22,26 +22,29 @@ passport.use(new GoogleStrategy({
   scope: ['profile', 'email']
 }, async (accessToken, refreshToken, profile, done) => {
   try {
-    // ユーザーが既に存在するか確認
-    let user = await User.findOne({ googleId: profile.id });
+    // ユーザーが既に存在するか確認 - Sequelize構文に修正
+    let user = await User.findOne({ 
+      where: { googleId: profile.id } 
+    });
     
     if (user) {
       return done(null, user);
     }
     
-    // 新しいユーザーを作成
-    user = new User({
+    // 新しいユーザーを作成 - Sequelize構文に修正
+    user = await User.create({
       googleId: profile.id,
       email: profile.emails[0].value,
+      name: profile.displayName,
       displayName: profile.displayName,
       firstName: profile.name?.givenName || '',
       lastName: profile.name?.familyName || '',
-      photo: profile.photos?.[0]?.value || ''
+      picture: profile.photos?.[0]?.value || ''
     });
     
-    await user.save();
     done(null, user);
   } catch (error) {
+    console.error('Google認証エラー:', error);
     done(error, null);
   }
 }));
