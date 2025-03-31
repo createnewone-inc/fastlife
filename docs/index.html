@@ -4,41 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FastLife - ファスティング管理Webアプリ</title>
-    <link rel="icon" href="/fastlife/favicon.ico" />
-    
-    <!-- GitHub Pagesでのリダイレクト処理を追加 -->
-    <script type="text/javascript">
-      // シングルページアプリケーション用のリダイレクト
-      (function(){
-        // ローカルでの開発環境では実行しない
-        if (window.location.hostname === 'localhost' || 
-            window.location.hostname === '127.0.0.1') {
-          return;
-        }
-        
-        const l = window.location;
-        if (l.search) {
-          // URLクエリからパスを取得してリダイレクト
-          const q = {};
-          l.search.slice(1).split('&').forEach(function(v) {
-            const a = v.split('=');
-            q[a[0]] = a.slice(1).join('=').replace(/~and~/g, '&');
-          });
-          if (q.p !== undefined) {
-            window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + (q.p || '') +
-              (q.q ? ('?' + q.q) : '') +
-              l.hash
-            );
-          }
-        }
-      }());
-    </script>
-    
+    <link rel="icon" href="/favicon.ico" />
     <script type="module" crossorigin src="/fastlife/assets/index-71b0c668.js"></script>
     <link rel="stylesheet" href="/fastlife/assets/index-0715ab0c.css">
   </head>
   <body>
+    <!-- ファーストビューの背景画像やキャッチコピーをindex.html側で実装する場合はここで調整 -->
     <div id="root"></div>
+    
   </body>
-</html> 
+</html>
